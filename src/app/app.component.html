@@ -1,15 +1,14 @@
 <div class="container-fluid">
   <h1>Boostrap Entrolment Form</h1>
   <form #userForm="ngForm">
-    {{ userForm.value | json }}
-    <hr/>
-    {{userModel | json}}
+  
   
 
     <div class="form-group">
       <label>Name</label>
-      <input  type="text"  name=userName class="form-control" [(ngModel)]="userModel.name">
+      <input  type="text" required #name="ngModel" name=userName [class.is-invalid]="name.invalid" class="form-control" [(ngModel)]="userModel.name">
     </div>
+    {{name.valid}}
 
 
     <div class="form-group">
@@ -19,8 +18,10 @@
 
     <div class="form-group">
       <label>Phone</label>
-      <input type="tel" name=phone class="form-control" [(ngModel)]="userModel.phone">
+      <input type="tel" #phone="ngModel" pattern="^\d{10}$" 
+      [class.is-invalid]="phone.invalid && phone.touched"  name=phone class="form-control" [(ngModel)]="userModel.phone">
     </div>
+    {{phone.valid }}
 
     <div class="form-group">
       <select class="custom-select" name="topic" [(ngModel)]="userModel.topic">
