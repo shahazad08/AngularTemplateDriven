@@ -9,5 +9,14 @@ import { User } from './user';
 export class AppComponent {
  topics=["Angular", "React", "Vue"];
 
- userModel=new User('Shaikh', "sk.shahazad@gmail.com","8888888888",'','morning',true)
+ userModel=new User('', "","",'','',true)
+
+ Submit(): void {
+  console.log(this.userModel);
+  
+ }
+ changeValue() {
+  console.log(this.userModel.name);
+  
+ }
 }
